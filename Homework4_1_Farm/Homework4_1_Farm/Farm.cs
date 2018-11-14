@@ -10,6 +10,6 @@ namespace Homework4_1_Farm
     {
         public string Name {get; set; }
         public int Area { get; set; }
-        public List<GardenBed> GardenBed { get; set; }
+        public List<GardenBed> GardenBeds { get; set; }
     }
 }

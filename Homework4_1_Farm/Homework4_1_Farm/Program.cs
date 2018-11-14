@@ -13,11 +13,11 @@ namespace Homework4_1_Farm
             var myFarm = new Farm();
             myFarm.Name = "Моя первая ферма";
             myFarm.Area = 200;
-            myFarm.GardenBed[0].Area = 20;
-            myFarm.GardenBed[0].Plant[0].Name = "Огурец";
-            myFarm.GardenBed[0].Plant[0].PlantingSeason = "Апрель";
-            myFarm.GardenBed[0].Plant[0].HarvestSeason = "Август";
-            myFarm.GardenBed[0].Plant[0].Area = 4;
+            myFarm.GardenBeds = new List<GardenBed>();
+            myFarm.GardenBeds.Add(20, new List<Plant>());
+            myFarm.GardenBeds[0].Area += 10;
+            Console.WriteLine(myFarm.GardenBeds[0].Area);
+            Console.ReadKey();
         }
     }
 }
