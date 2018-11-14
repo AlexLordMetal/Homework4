@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Homework4_1_Farm
 {
-    class Farm
+    class Buiding
     {
-        public string Name {get; set; }
+        public string Name { get; set; }
         public int Area { get; set; }
-        public List<GardenBed> GardenBeds { get; set; }
-        public List<Buiding> Buildings { get; set; }
+        public int LivestocksAmount { get; set; }
+        public List<Livestock> Livestocks { get; set; }
     }
 }

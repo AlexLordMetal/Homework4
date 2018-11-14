@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buiding.cs" />
+    <Compile Include="Livestock.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="GardenBed.cs" />
     <Compile Include="Plant.cs" />
     <Compile Include="Farm.cs" />
