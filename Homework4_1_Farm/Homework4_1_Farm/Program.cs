@@ -99,7 +99,9 @@ namespace Homework4_1_Farm
             //Adds list of buildings to farm
             myFarm.Buildings = buildingsList;
 
-            //Console.WriteLine($"{myFarm.Buildings[1].LivestocksAmount}, {myFarm.Buildings[1].Livestocks[4].Production.Name}");
+            myFarm.FarmReport();
+            myFarm.GardenBedsReport();
+            myFarm.BuildingsReport();
             Console.ReadKey();
         }
     }
