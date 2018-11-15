@@ -81,7 +81,7 @@ namespace Homework4_3_Farm_with_areaconditions_and_moves
             //Creates second building, adds name, area, amount and previously created first list of livestocks
             var secondBuilding = new Buiding();
             secondBuilding.Name = "Сарай";
-            secondBuilding.Area = 220;
+            secondBuilding.Area = 20;
             secondBuilding.LivestocksAmount = 15;
             secondBuilding.Livestocks = livestocksSecondList;
 

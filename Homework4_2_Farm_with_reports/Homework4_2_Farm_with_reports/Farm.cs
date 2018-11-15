@@ -35,7 +35,7 @@ namespace Homework4_2_Farm_with_reports
 
         public void BuildingsReport()
         {
-            Console.WriteLine($"Всего строений {GardenBeds.Count}");
+            Console.WriteLine($"Всего строений {Buildings.Count}");
             for (int i = 0; i < Buildings.Count; i++)
             {
                 Console.Write($"Строение \"{Buildings[i].Name}\" площадью {Buildings[i].Area} гектар на {Buildings[i].LivestocksAmount} животных. В нем живут ");
