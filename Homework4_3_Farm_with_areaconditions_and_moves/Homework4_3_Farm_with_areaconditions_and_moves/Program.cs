@@ -11,9 +11,7 @@ namespace Homework4_3_Farm_with_areaconditions_and_moves
         static void Main(string[] args)
         {
             //Creates farm, adds name and area
-            var myFarm = new Farm();
-            myFarm.Name = "Моя первая ферма";
-            myFarm.Area = 200;
+            var myFarm = new Farm("Моя первая ферма", 200);
 
             //Creates list of fruits, adds some fruits
             var fruitsList = new List<Plant>();
@@ -40,20 +38,9 @@ namespace Homework4_3_Farm_with_areaconditions_and_moves
             vegetablesGarden.Area = 40;
             vegetablesGarden.Plants = vegetablesList;
 
-            //Creates list of gardenbeds, adds previously created gardenbeds
-            var gardenBedsList = new List<GardenBed>();
-            gardenBedsList.Add(fruitsGarden);
-            gardenBedsList.Add(vegetablesGarden);
-
-            //Adds list of gardenbeds to farm
-            myFarm.GardenBeds = gardenBedsList;
-
-            var testGarden = new GardenBed
-            {
-                Area = 150
-            };
-            myFarm.GardenBeds.Add(testGarden);
-
+            //Adds previously created gardenbeds to farm
+            myFarm.AddGardenBed(fruitsGarden);
+            myFarm.AddGardenBed(vegetablesGarden);
 
             //Creates first list of livestocks, fills it
             var livestocksFirstList = new List<Livestock>();
@@ -94,24 +81,19 @@ namespace Homework4_3_Farm_with_areaconditions_and_moves
             //Creates second building, adds name, area, amount and previously created first list of livestocks
             var secondBuilding = new Buiding();
             secondBuilding.Name = "Сарай";
-            secondBuilding.Area = 20;
+            secondBuilding.Area = 220;
             secondBuilding.LivestocksAmount = 15;
             secondBuilding.Livestocks = livestocksSecondList;
 
-            //Creates list of buildings, adds previously created buildings
-            var buildingsList = new List<Buiding>();
-            buildingsList.Add(firstBuilding);
-            buildingsList.Add(secondBuilding);
-
-            //Adds list of buildings to farm
-            myFarm.Buildings = buildingsList;
+            //Adds previously created buildings to farm
+            myFarm.AddBuilding(firstBuilding);
+            myFarm.AddBuilding(secondBuilding);
 
             //Writes reports to console
-            //myFarm.FarmReport();
-            //myFarm.GardenBedsReport();
-            //myFarm.BuildingsReport();
+            myFarm.FarmReport();
+            myFarm.GardenBedsReport();
+            myFarm.BuildingsReport();
 
-            Console.WriteLine(myFarm.OccupiedArea);
             Console.ReadKey();
         }
     }
