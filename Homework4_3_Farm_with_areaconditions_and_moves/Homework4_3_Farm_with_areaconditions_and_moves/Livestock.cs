@@ -4,5 +4,10 @@
     {
         public string Name { get; set; }
         public Product Production { get; set; }
+
+        public Livestock(string name = "Default")
+        {
+            Name = name;
+        }
     }
 }

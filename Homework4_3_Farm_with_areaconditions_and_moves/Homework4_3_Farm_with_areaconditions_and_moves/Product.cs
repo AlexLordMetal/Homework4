@@ -5,7 +5,7 @@
         public string Name { get; set; }
         public int Weight { get; set; }
 
-        public Product(string name, int weight)
+        public Product(string name="Default", int weight = 0)
         {
             Name = name;
             Weight = weight;

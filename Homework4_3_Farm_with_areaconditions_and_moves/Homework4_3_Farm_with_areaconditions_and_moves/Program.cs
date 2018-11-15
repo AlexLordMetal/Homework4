@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Homework4_3_Farm_with_areaconditions_and_moves
 {
@@ -13,77 +10,48 @@ namespace Homework4_3_Farm_with_areaconditions_and_moves
             //Creates farm, adds name and area
             var myFarm = new Farm("Моя первая ферма", 200);
 
-            //Creates list of fruits, adds some fruits
-            var fruitsList = new List<Plant>();
-            fruitsList.Add(new Plant("Банан", "март", "июль", 5));
-            fruitsList.Add(new Plant("Авокадо", "февраль", "сентябрь"));
-            fruitsList.Add(new Plant("Ананас", "апрель", "август", 4));
-            fruitsList.Add(new Plant("Фейхоа", "январь", "май", 3));
+            //Creates gardenbed of fruits, adds area and fruits
+            var fruitsGarden = new GardenBed(20);
+            fruitsGarden.AddPlant(new Plant("Банан", "март", "июль", 5));
+            fruitsGarden.AddPlant(new Plant("Авокадо", "февраль", "сентябрь"));
+            fruitsGarden.AddPlant(new Plant("Ананас", "апрель", "август", 4));
+            fruitsGarden.AddPlant(new Plant("Фейхоа", "январь", "май", 3));
 
-            //Creates gardenbed of fruits, adds area and list of fruits
-            var fruitsGarden = new GardenBed();
-            fruitsGarden.Area = 20;
-            fruitsGarden.Plants = fruitsList;
-
-            //Creates list of vegetables, adds some vegetables
-            var vegetablesList = new List<Plant>();
-            vegetablesList.Add(new Plant("Огурец", "апрель", "август", 3));
-            vegetablesList.Add(new Plant("Помидор", "апрель", "сентябрь", 3));
-            vegetablesList.Add(new Plant("Капуста", "март", "август", 5));
-            vegetablesList.Add(new Plant("Лук", "март", "июль"));
-            vegetablesList.Add(new Plant("Картофель", "март", "сентябрь", 10));
-
-            //Creates gardenbed of vegetables, adds area and list of vegetables
-            var vegetablesGarden = new GardenBed();
-            vegetablesGarden.Area = 40;
-            vegetablesGarden.Plants = vegetablesList;
+            //Creates gardenbed of vegetables, adds area and vegetables
+            var vegetablesGarden = new GardenBed(40);
+            vegetablesGarden.AddPlant(new Plant("Огурец", "апрель", "август", 3));
+            vegetablesGarden.AddPlant(new Plant("Помидор", "апрель", "сентябрь", 3));
+            vegetablesGarden.AddPlant(new Plant("Капуста", "март", "август", 5));
+            vegetablesGarden.AddPlant(new Plant("Лук", "март", "июль"));
+            vegetablesGarden.AddPlant(new Plant("Картофель", "март", "сентябрь", 10));
 
             //Adds previously created gardenbeds to farm
             myFarm.AddGardenBed(fruitsGarden);
             myFarm.AddGardenBed(vegetablesGarden);
 
-            //Creates first list of livestocks, fills it
-            var livestocksFirstList = new List<Livestock>();
-            Livestock cow = new Livestock();
-            cow.Name = "Корова";
+            //Creates first building with name, area, amount and fills it with livestocks
+            var firstBuilding = new Building("Хлев", 50, 10);
+            Livestock cow = new Livestock("Корова");
+            Livestock goat = new Livestock("Коза");
+            Livestock pig = new Livestock("Свинья");
             cow.Production = new Product("молоко", 1000);
-            livestocksFirstList.Add(cow);
-            Livestock goat = new Livestock();
-            goat.Name = "Коза";
             goat.Production = new Product("молоко", 500);
-            livestocksFirstList.Add(goat);
-            Livestock pig = new Livestock();
-            pig.Name = "Свинья";
             pig.Production = new Product("мясо", 2500);
-            livestocksFirstList.Add(pig);
+            firstBuilding.AddLivestock(cow);
+            firstBuilding.AddLivestock(goat);
+            firstBuilding.AddLivestock(pig);
 
-            //Creates first building, adds name, area, amount and previously created first list of livestocks
-            var firstBuilding = new Buiding();
-            firstBuilding.Name = "Хлев";
-            firstBuilding.Area = 50;
-            firstBuilding.LivestocksAmount = 10;
-            firstBuilding.Livestocks = livestocksFirstList;
-
-            //Creates second list of livestocks, fills it
-            var livestocksSecondList = new List<Livestock>();
-            Livestock chicken = new Livestock();
-            chicken.Name = "Курица";
-            chicken.Production = new Product("яйцо", 2);
-            livestocksSecondList.Add(chicken);
-            livestocksSecondList.Add(chicken);
-            livestocksSecondList.Add(chicken);
-            Livestock duck = new Livestock();
-            duck.Name = "Утка";
-            duck.Production = new Product("яйцо", 1);
-            livestocksSecondList.Add(duck);
-            livestocksSecondList.Add(duck);
-
-            //Creates second building, adds name, area, amount and previously created first list of livestocks
-            var secondBuilding = new Buiding();
-            secondBuilding.Name = "Сарай";
-            secondBuilding.Area = 20;
-            secondBuilding.LivestocksAmount = 15;
-            secondBuilding.Livestocks = livestocksSecondList;
+            //Creates second building with name, area, amount and fills it with livestocks
+            var secondBuilding = new Building("Сарай", 20, 15);
+            Livestock chicken = new Livestock("Курица");
+            Livestock duck = new Livestock("Утка");
+            chicken.Production = new Product("яйцо куриное", 2);
+            duck.Production = new Product("яйцо утиное", 1);
+            secondBuilding.AddLivestock(chicken);
+            secondBuilding.AddLivestock(duck);
+            secondBuilding.AddLivestock(chicken);
+            secondBuilding.AddLivestock(chicken);
+            secondBuilding.AddLivestock(duck);
 
             //Adds previously created buildings to farm
             myFarm.AddBuilding(firstBuilding);
@@ -92,6 +60,12 @@ namespace Homework4_3_Farm_with_areaconditions_and_moves
             //Writes reports to console
             myFarm.FarmReport();
             myFarm.GardenBedsReport();
+            myFarm.BuildingsReport();
+
+            myFarm.ChangePlantGardenBed(0,1,1);
+            myFarm.GardenBedsReport();
+
+            myFarm.ChangeLivestockBuilding(1, 0);
             myFarm.BuildingsReport();
 
             Console.ReadKey();
