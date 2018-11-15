@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework4_3_Farm_with_areaconditions_and_moves", "Homework4_3_Farm_with_areaconditions_and_moves\Homework4_3_Farm_with_areaconditions_and_moves.csproj", "{E0D626A2-DB2D-4F10-A44F-46FFC572A215}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0D626A2-DB2D-4F10-A44F-46FFC572A215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D626A2-DB2D-4F10-A44F-46FFC572A215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D626A2-DB2D-4F10-A44F-46FFC572A215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D626A2-DB2D-4F10-A44F-46FFC572A215}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92D63F64-72BD-4DE2-8FF8-874BCF74F37A}
+	EndGlobalSection
+EndGlobal
