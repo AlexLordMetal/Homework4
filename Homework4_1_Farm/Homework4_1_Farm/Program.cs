@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Homework4_1_Farm
 {
@@ -14,7 +11,7 @@ namespace Homework4_1_Farm
             var myFarm = new Farm();
             myFarm.Name = "Моя первая ферма";
             myFarm.Area = 200;
-            
+
             //Creates list of fruits, adds some fruits
             var fruitsList = new List<Plant>();
             fruitsList.Add(new Plant("Банан", "март", "июль", 5));
@@ -99,9 +96,6 @@ namespace Homework4_1_Farm
             //Adds list of buildings to farm
             myFarm.Buildings = buildingsList;
 
-            myFarm.FarmReport();
-            myFarm.GardenBedsReport();
-            myFarm.BuildingsReport();
             Console.ReadKey();
         }
     }

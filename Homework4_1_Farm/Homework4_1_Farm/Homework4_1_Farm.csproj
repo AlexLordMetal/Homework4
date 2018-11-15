@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{87E799BD-BF16-4F43-8CAE-6625A895A5E4}</ProjectGuid>
+    <ProjectGuid>{14D4B29A-AD86-4112-8D45-639DD978523B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Homework4_1_Farm</RootNamespace>
     <AssemblyName>Homework4_1_Farm</AssemblyName>
@@ -44,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buiding.cs" />
-    <Compile Include="Livestock.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="GardenBed.cs" />
-    <Compile Include="Plant.cs" />
     <Compile Include="Farm.cs" />
+    <Compile Include="GardenBed.cs" />
+    <Compile Include="Livestock.cs" />
+    <Compile Include="Plant.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
