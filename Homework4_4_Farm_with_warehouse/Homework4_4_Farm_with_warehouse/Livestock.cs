@@ -1,4 +1,6 @@
-﻿namespace Homework4_4_Farm_with_warehouse
+﻿using System;
+
+namespace Homework4_4_Farm_with_warehouse
 {
     class Livestock
     {
@@ -8,6 +10,17 @@
         public Livestock(string name = "Default")
         {
             Name = name;
+        }
+
+        public Livestock()
+        {
+            Console.Write("Укажите название животного: ");
+            Name = Console.ReadLine();
+            Console.Write("Укажите название получаемого животноводческого продукта: ");
+            string productionName = Console.ReadLine();
+            Console.Write($"Укажите количество получаемого животноводческого продукта \"{Name}\" (в килограммах): ");
+            int productionWeight = FarmMathUtilities.ConditionParse();
+            Production = new Product(productionName, productionWeight);
         }
     }
 }

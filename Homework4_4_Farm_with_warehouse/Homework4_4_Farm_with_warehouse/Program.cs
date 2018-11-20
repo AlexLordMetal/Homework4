@@ -30,7 +30,7 @@ namespace Homework4_4_Farm_with_warehouse
             myFarm.AddGardenBed(vegetablesGarden);
 
             //Creates first building with name, area, amount and fills it with livestocks
-            var firstBuilding = new Building("Хлев", 50, 10);
+            var firstBuilding = new Building("Хлев", 50, 4);
             Livestock cow = new Livestock("Корова");
             Livestock goat = new Livestock("Коза");
             Livestock pig = new Livestock("Свинья");
@@ -62,23 +62,9 @@ namespace Homework4_4_Farm_with_warehouse
             myFarm.GardenBedsReport();
             myFarm.BuildingsReport();
 
-            myFarm.ChangePlantGardenBed(0, 1, 1);
-            myFarm.GardenBedsReport();
-
-            myFarm.ChangeLivestockBuilding(1, 0);
-            myFarm.BuildingsReport();
-
+            //Game
             FarmGame myGame = new FarmGame(myFarm);
-            Console.WriteLine(myGame.CurrentSeason);
-            myGame.NextSeason();
-            myGame.NextSeason();
-            myGame.NextSeason();
-            myGame.NextSeason();
-            Console.WriteLine(myGame.CurrentSeason);
             myGame.FarmGameMenu();
-            Console.WriteLine($"{myFarm.Buildings[1].Livestocks[3].Name} {myFarm.Buildings[1].Livestocks[3].Production.Name} {myFarm.Buildings[1].Livestocks[3].Production.Weight}");
-            
-            Console.ReadKey();
         }
     }
 }

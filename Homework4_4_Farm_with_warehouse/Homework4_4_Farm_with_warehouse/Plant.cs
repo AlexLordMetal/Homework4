@@ -1,4 +1,6 @@
-﻿namespace Homework4_4_Farm_with_warehouse
+﻿using System;
+
+namespace Homework4_4_Farm_with_warehouse
 {
     class Plant
     {
@@ -13,6 +15,18 @@
             PlantingSeason = plantingSeason;
             HarvestSeason = harvestSeason;
             Area = area;
+        }
+
+        public Plant()
+        {
+            Console.Write("Укажите название растения: ");
+            Name = Console.ReadLine();
+            Console.WriteLine($"Укажите сезон посадки растения \"{Name}\":\n1 - Зима,\n2 - Весна,\n3 - Лето,\n4 - Осень");
+            PlantingSeason = (Seasons)FarmMathUtilities.ConditionParse(4);
+            Console.WriteLine($"Укажите сезон сбора растения \"{Name}\":\n1 - Зима,\n2 - Весна,\n3 - Лето,\n4 - Осень");
+            HarvestSeason = (Seasons)FarmMathUtilities.ConditionParse(4);
+            Console.Write($"Укажите площадь посадки растения \"{Name}\": ");
+            Area = FarmMathUtilities.ConditionParse();
         }
     }
 }

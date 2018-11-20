@@ -17,6 +17,9 @@ namespace Homework4_4_Farm_with_warehouse
             CurrentSeason = currentSeason;
         }
 
+
+        //Methods
+
         public void NextSeason()
         {
             if (CurrentSeason != Seasons.Autumn)
@@ -41,9 +44,11 @@ namespace Homework4_4_Farm_with_warehouse
                 Console.WriteLine("4 - Отчет по складу;");
                 Console.WriteLine("5 - Управление фермой;");
                 Console.WriteLine("Q (q) - Выход из игры;");
-                Console.WriteLine("Другое - Смена сезона;");
+                Console.WriteLine("Другое - Смена сезона.");
+                string choise = Console.ReadLine();
+                Console.WriteLine();
 
-                switch (Console.ReadLine())
+                switch (choise)
                 {
                     case "1":
                         GameFarm.FarmReport();
@@ -58,7 +63,7 @@ namespace Homework4_4_Farm_with_warehouse
                         GameFarm.FarmWarehouse.Report();
                         break;
                     case "5":
-                        GameFarm.FarmGameManagement();
+                        GameFarm.FarmManagement();
                         break;
                     case "Q":
                         stopGame = true;

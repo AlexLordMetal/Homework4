@@ -11,7 +11,7 @@ namespace Homework4_4_Farm_with_warehouse
         public int Capacity { get; set; }
         public List<Product> Products { get; set; }
 
-        public Warehouse(int capacity = 100)
+        public Warehouse(int capacity = 1000)
         {
             Capacity = capacity;
             Products = new List<Product>();
@@ -30,6 +30,9 @@ namespace Homework4_4_Farm_with_warehouse
             }
         }
 
+
+        //Methods
+
         public void WarehouseFill(List<Product> newProducts)
         {
             foreach (var newProduct in newProducts)
@@ -39,7 +42,7 @@ namespace Homework4_4_Farm_with_warehouse
                     int productIndex = IndexOfProduct(Products, newProduct);
                     if (productIndex == -1)
                     {
-                        Products.Add(new Product() {Name = newProduct.Name, Weight = newProduct.Weight});
+                        Products.Add(new Product(newProduct.Name, newProduct.Weight));      //Здесь юзается костыль
                     }
                     else
                     {
@@ -51,20 +54,6 @@ namespace Homework4_4_Farm_with_warehouse
                     Console.WriteLine($"Продукт {newProduct.Name} не добавлен, поскольку он уже не помещается на склад");
                 }
             }
-        }
-
-        private int IndexOfProduct(List<Product> products, Product newProduct)
-        {
-            int productIndex = -1;
-            for (var productCount = 0; productCount < products.Count; productCount++)
-            {
-                if (products[productCount].Name == newProduct.Name)
-                {
-                    productIndex = productCount;
-                    break;
-                }
-            }
-            return productIndex;
         }
 
         public void Report()
@@ -83,6 +72,23 @@ namespace Homework4_4_Farm_with_warehouse
                 }
             }
             Console.WriteLine();
+        }
+
+
+        //Additional method
+
+        private int IndexOfProduct(List<Product> products, Product newProduct)
+        {
+            int productIndex = -1;
+            for (var productCount = 0; productCount < products.Count; productCount++)
+            {
+                if (products[productCount].Name == newProduct.Name)
+                {
+                    productIndex = productCount;
+                    break;
+                }
+            }
+            return productIndex;
         }
 
     }

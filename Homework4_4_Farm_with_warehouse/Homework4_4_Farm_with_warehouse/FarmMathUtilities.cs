@@ -13,5 +13,26 @@ namespace Homework4_4_Farm_with_warehouse
             double occupiedPercent = Math.Round((double)occupiedArea / (double)area * 100, 2);
             return occupiedPercent;
         }
+
+        public static int ConditionParse(int condition = 2147483647)
+        {
+            var isCorrect = false;
+            int area = 0;
+            while (isCorrect != true)
+            {
+                isCorrect = Int32.TryParse(Console.ReadLine(), out area);
+                if (area <= 0 || area > condition)
+                {
+                    isCorrect = false;
+                }
+                if (isCorrect == false)
+                {
+                    Console.Write("Ввод некорректен! Еще раз: ");
+                }
+            }
+            return area;
+        }
+
+
     }
 }
