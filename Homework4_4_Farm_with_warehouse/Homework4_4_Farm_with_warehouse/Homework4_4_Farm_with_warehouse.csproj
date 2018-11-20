@@ -46,6 +46,7 @@
     <Compile Include="Building.cs" />
     <Compile Include="Farm.cs" />
     <Compile Include="FarmGame.cs" />
+    <Compile Include="FarmMathUtilities.cs" />
     <Compile Include="GardenBed.cs" />
     <Compile Include="Livestock.cs" />
     <Compile Include="Plant.cs" />
@@ -57,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ToDo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

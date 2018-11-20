@@ -39,7 +39,7 @@ namespace Homework4_4_Farm_with_warehouse
                     int productIndex = IndexOfProduct(Products, newProduct);
                     if (productIndex == -1)
                     {
-                        Products.Add(newProduct);
+                        Products.Add(new Product() {Name = newProduct.Name, Weight = newProduct.Weight});
                     }
                     else
                     {
@@ -66,5 +66,24 @@ namespace Homework4_4_Farm_with_warehouse
             }
             return productIndex;
         }
+
+        public void Report()
+        {
+            Console.WriteLine($"Склад имеет общую вместимость {Capacity} килограмм. Заполнен на {FarmMathUtilities.OccupiedPercent(OccupiedCapacity, Capacity)}%.");
+            if (OccupiedCapacity == 0)
+            {
+                Console.WriteLine("На складе пусто.");
+            }
+            else
+            {
+                Console.WriteLine("На складе хранится:");
+                foreach (var product in Products)
+                {
+                    Console.WriteLine($"{product.Name} - {product.Weight} килограмм.");
+                }
+            }
+            Console.WriteLine();
+        }
+
     }
 }

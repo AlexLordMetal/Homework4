@@ -5,15 +5,12 @@ namespace Homework4_4_Farm_with_warehouse
 {
     class Farm
     {
-        private List<string> seasons = new List<string> { "Зима", "Весна", "Лето", "Осень" };
-
         public string Name { get; set; }
         public int Area { get; set; }
         public List<GardenBed> GardenBeds { get; set; }
         public List<Building> Buildings { get; set; }
-        public Warehouse ThisFarmWarehouse { get; set; }
+        public Warehouse FarmWarehouse { get; set; }
         public List<string> MyProperty { get; set; }
-        public string CurrentSeason { get; set; }
 
         public Farm(string name = "Default", int area = 100)
         {
@@ -21,9 +18,7 @@ namespace Homework4_4_Farm_with_warehouse
             Area = area;
             GardenBeds = new List<GardenBed>();
             Buildings = new List<Building>();
-            ThisFarmWarehouse = new Warehouse();
-            CurrentSeason = seasons[0];
-
+            FarmWarehouse = new Warehouse();
         }
 
         public int OccupiedArea
@@ -42,7 +37,6 @@ namespace Homework4_4_Farm_with_warehouse
                 return occupiedArea;
             }
         }
-
 
         public void AddGardenBed(GardenBed gardenbed)
         {
@@ -68,15 +62,9 @@ namespace Homework4_4_Farm_with_warehouse
             }
         }
 
-        public double OccupiedPercent(int occupiedArea, int area)
-        {
-            double occupiedPercent = Math.Round((double)occupiedArea / (double)area * 100, 2);
-            return occupiedPercent;
-        }
-
         public void FarmReport()
         {
-            Console.WriteLine($"Эта ферма \"{Name}\" площадью {Area} гектар с {GardenBeds.Count} грядками и {Buildings.Count} строениями. Всего занято {OccupiedArea} гектар ({OccupiedPercent(OccupiedArea, Area)}% площади).\n");
+            Console.WriteLine($"Эта ферма \"{Name}\" площадью {Area} гектар с {GardenBeds.Count} грядками и {Buildings.Count} строениями. Всего занято {OccupiedArea} гектар ({FarmMathUtilities.OccupiedPercent(OccupiedArea, Area)}% площади).\n");
         }
 
         public void GardenBedsReport()
@@ -91,7 +79,7 @@ namespace Homework4_4_Farm_with_warehouse
                     Console.Write($"{plant.Name}, ");
                     gardenBedOccupiedArea += plant.Area;
                 }
-                Console.WriteLine($"заполнено {OccupiedPercent(gardenBedOccupiedArea, GardenBeds[i].Area)}% всей площади грядки.");
+                Console.WriteLine($"заполнено {FarmMathUtilities.OccupiedPercent(gardenBedOccupiedArea, GardenBeds[i].Area)}% всей площади грядки.");
             }
             Console.WriteLine();
         }
@@ -99,14 +87,14 @@ namespace Homework4_4_Farm_with_warehouse
         public void BuildingsReport()
         {
             Console.WriteLine($"Всего строений {Buildings.Count}.");
-            foreach (var building in Buildings)
+            for (int i = 0; i < Buildings.Count; i++)
             {
-                Console.Write($"Строение \"{building.Name}\" площадью {building.Area} гектар на {building.Amount} животных. В нем живут ");
-                foreach (var livestock in building.Livestocks)
+                Console.Write($"Строение {i + 1} \"{Buildings[i].Name}\" площадью {Buildings[i].Area} гектар на {Buildings[i].Amount} животных. В нем живут ");
+                foreach (var livestock in Buildings[i].Livestocks)
                 {
                     Console.Write($"{livestock.Name}, ");
                 }
-                Console.WriteLine($"заполнено на {OccupiedPercent(building.OccupiedAmount, building.Amount)}%.");
+                Console.WriteLine($"заполнено на {FarmMathUtilities.OccupiedPercent(Buildings[i].OccupiedAmount, Buildings[i].Amount)}%.");
             }
             Console.WriteLine();
         }
@@ -139,39 +127,21 @@ namespace Homework4_4_Farm_with_warehouse
             }
         }
 
-        public void WarehouseReport()
+        public void Harvest(Seasons season)
         {
-            Console.WriteLine($"Склад имеет общую вместимость {ThisFarmWarehouse.Capacity} килограмм. Заполнен на {OccupiedPercent(ThisFarmWarehouse.OccupiedCapacity, ThisFarmWarehouse.Capacity)}%.");
-            if (ThisFarmWarehouse.OccupiedCapacity == 0)
-            {
-                Console.WriteLine("На складе пусто.");
-            }
-            else
-            {
-                Console.WriteLine("На складе хранится:");
-                foreach (var product in ThisFarmWarehouse.Products)
-                {
-                    Console.WriteLine($"{product.Name} - {product.Weight} килограмм.");
-                }
-            }
-            Console.WriteLine();
-        }
-
-        public void Harvest(Seasons harvestSeason)
-        {
-            switch (harvestSeason)
+            switch (season)
             {
                 case Seasons.Winter:
-                    Console.Write("Наступила зима.");
+                    Console.WriteLine("Наступила зима.");
                     break;
                 case Seasons.Spring:
-                    Console.Write("Наступила весна.");
+                    Console.WriteLine("Наступила весна.");
                     break;
                 case Seasons.Summer:
-                    Console.Write("Наступило лето.");
+                    Console.WriteLine("Наступило лето.");
                     break;
                 case Seasons.Autumn:
-                    Console.Write("Наступила осень.");
+                    Console.WriteLine("Наступила осень.");
                     break;
                 default:
                     break;
@@ -189,15 +159,62 @@ namespace Homework4_4_Farm_with_warehouse
             {
                 foreach (var plant in gardenbed.Plants)
                 {
-                    if (plant.HarvestSeason == harvestSeason)
+                    if (plant.HarvestSeason == season)
                     {
                         Console.WriteLine($"{plant.Name} дал(а) урожай.");
                         products.Add(new Product(plant.Name, 1));
                     }
                 }
             }
-            ThisFarmWarehouse.WarehouseFill(products);
+            FarmWarehouse.WarehouseFill(products);
+            Console.WriteLine();
         }
+
+        public void FarmGameManagement()
+        {
+            Console.WriteLine("Выберите действие:");
+            Console.WriteLine("1 - Добавить грядку ;");
+            Console.WriteLine("2 - Удалить грядку;");
+            Console.WriteLine("3 - Добавить строение;");
+            Console.WriteLine("4 - Удалить строение;");
+            Console.WriteLine("5 - Посадить растение на грядку;");
+            Console.WriteLine("6 - Пересадить растение на другую грядку;");
+            Console.WriteLine("7 - Выкопать растение с грядки;");
+            Console.WriteLine("8 - Добавить животное в строение;");
+            Console.WriteLine("9 - Переселить животное в другое строение;");
+            Console.WriteLine("0 - Выгнать животное из строения;");
+            Console.WriteLine("Другое - ничего не делать;");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    GameFarm.FarmReport();
+                    break;
+                case "2":
+                    GameFarm.GardenBedsReport();
+                    break;
+                case "3":
+                    GameFarm.BuildingsReport();
+                    break;
+                case "4":
+                    GameFarm.FarmWarehouse.Report();
+                    break;
+                case "5":
+                    GameFarm.FarmGameManagement();
+                    break;
+                case "Q":
+                    stopGame = true;
+                    break;
+                case "q":
+                    stopGame = true;
+                    break;
+                default:
+                    NextSeason();
+                    GameFarm.Harvest(CurrentSeason);
+                    break;
+            }
+        }
+
 
     }
 }

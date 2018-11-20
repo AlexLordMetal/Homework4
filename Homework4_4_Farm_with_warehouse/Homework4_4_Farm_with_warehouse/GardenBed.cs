@@ -37,7 +37,7 @@ namespace Homework4_4_Farm_with_warehouse
             {
                 Console.WriteLine($"Растение \"{plant.Name}\" не добавлено, поскольку оно уже не помещается на грядке (превышение максимального размера грядки на {OccupiedArea + plant.Area - Area} гектар)\n");
             }
-
         }
+
     }
 }

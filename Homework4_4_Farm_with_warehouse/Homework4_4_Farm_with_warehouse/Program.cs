@@ -68,9 +68,16 @@ namespace Homework4_4_Farm_with_warehouse
             myFarm.ChangeLivestockBuilding(1, 0);
             myFarm.BuildingsReport();
 
-            myFarm.WarehouseReport();
-            myFarm.Harvest(Seasons.Autumn);
-            myFarm.WarehouseReport();
+            FarmGame myGame = new FarmGame(myFarm);
+            Console.WriteLine(myGame.CurrentSeason);
+            myGame.NextSeason();
+            myGame.NextSeason();
+            myGame.NextSeason();
+            myGame.NextSeason();
+            Console.WriteLine(myGame.CurrentSeason);
+            myGame.FarmGameMenu();
+            Console.WriteLine($"{myFarm.Buildings[1].Livestocks[3].Name} {myFarm.Buildings[1].Livestocks[3].Production.Name} {myFarm.Buildings[1].Livestocks[3].Production.Weight}");
+            
             Console.ReadKey();
         }
     }
